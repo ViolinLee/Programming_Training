@@ -12,6 +12,7 @@ int main(int argc, char* argv[])
 	rn = b; // 将 rn 的值复制为 b 的值。此时 rn 其实是 a 的一个别名，对 rn 赋值其实就是对 a 赋值。执行完此句，a 和 b 的值都是20 
 	cout << "a = " << a << endl;
 	cout << "b = " << b << endl;
+	cout << "rn = " << rn << endl; //操作引用与操作变量完全一致。直接打印引用，得到的是引用绑定的变量的值 
 	
 	rn = 100; // 将 rn 赋值为100，此时 a 的值变成100 
 	
