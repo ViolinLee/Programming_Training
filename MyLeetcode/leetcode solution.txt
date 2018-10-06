@@ -1,0 +1,14 @@
+LeetCode solutions in C++ 11 and Python3（1500）
+https://github.com/pezy/LeetCode
+
+Python / C++ 11 Solutions of All LeetCode Questions（6000）
+https://github.com/kamyu104/LeetCode
+
+LeetCode题解，151道题完整版（6000）
+https://github.com/soulmachine/leetcode
+
+LeetCode Problems' Solutions（8000）
+https://github.com/haoel/leetcode
+
+LeetCode题解csdn专栏
+https://blog.csdn.net/column/details/leetcode-solution.html

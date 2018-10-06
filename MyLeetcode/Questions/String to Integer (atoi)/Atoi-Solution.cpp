@@ -1,0 +1,31 @@
+class Solution {
+public:
+    int atoi(const char *str) {
+        int num = 0;
+        int sign = 1;
+        const int n = strlen(str);
+        int i = 0;
+        
+        while (str[i] == ' ' && i < n) i++;
+        
+        if (str[i] == '+') {
+            i++;
+        } else if (str[i] == '-') {
+            sign = -1;
+            i++;
+    	}
+    	
+    	for (; i < n; i++) {
+    		if (str[i] < '0' || str[i] > '9')
+    		break;
+    	    if sign = 1 {
+			    if (num > INT_MAX / 10 || (num == TNT_MAX / 10 && (str[i] - '0') > INT_MAX % 10)) {
+			    	num = num * 10 + str[i];
+				}
+			else {
+				if (num > INT_MIN / 10 || (num == INT_MIN / 10 && (str[i] - '0') > INT_MIN % 10)) {
+				    num = num * 10 - str[i];
+				}
+			}
+			}
+		}
