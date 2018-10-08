@@ -9,14 +9,19 @@
     模板参数 
 */
 
+// chain node
+
+#ifndef chainNode_
+#define chainNode_
+
 template <class T>
 struct chainNode
 {
-	//数据成员
+	// data members
 	T element;
 	chainNode<T> *next; 
 	
-	//方法 
+	// methods 
 	chainNode() {}
 	chainNode(const T& element)
 	    {this->element = element;}
@@ -24,4 +29,6 @@ struct chainNode
 	    {this->element = element;
 		 this->next = next;}
 }; 
- 
+
+#endif
+
