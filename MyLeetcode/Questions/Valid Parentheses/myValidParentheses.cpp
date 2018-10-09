@@ -12,28 +12,44 @@
 using namespace std;
 class Solution{
 public:
-	bool isValid(char* A){
-		stack<char> S; //
-		string str = string(A);
+	bool isValid(string str){
+		stack<char> S; // 
 		int len = str.length();
+		//cout << len << endl;
 		
-		for (int i=0; i<len; i++) {
-			if (str[i] == S.top()) {
-				S.pop();
+
+		for (auto c : str) {
+			if (S.size()>0) {
+				if (S.top() == '[' || S.top() == '(' || S.top() == '{') {
+				    if (S.top() == '[' && c == ']') {S.pop();}
+			        else if (S.top() == '(' && c == ')') {S.pop();}
+			        else if (S.top() == '{' && c == '}') {S.pop();}
+			        else { S.push(c); cout << c << endl; }
+			    }
+			    
 			}
-			else S.push(str[i]);
+			
+			else {
+				S.push(c);
+				cout << c << endl;
+			}
+			
 		}
-		
+
+
 		return S.empty();
 	}
 };
 
 int main(){
 	Solution solution;
-	char A[] = "{{()[]}}";
+	string A = "{{[]()}}";
 	
-	cout << solution.isValid(A);
-	cout << 1;
+	cout << solution.isValid(A) << endl;
 	
 	return 0;
 }
+
+//程序正常，我的分类讨论是以栈顶是什么元素来分，判断==也过于直接（参考答案转化为数组下标==）。参考答案的分类讨论是以待加入的元素是什么元素来分。 
+//错误：用队列的做法（遇到和最左边配对的就pop）只能保证同种类型的括号成对存在，不能保证顺序符合要求。
+//注意：C++的 stack 为空栈时，如果使用 .top() 在 DEV 中会发生程序奔溃！ 
