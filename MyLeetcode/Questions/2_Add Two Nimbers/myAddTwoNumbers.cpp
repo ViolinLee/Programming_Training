@@ -11,7 +11,43 @@ struct ListNode {
     ListNode(int x) : val(x), next(NULL) {}
 };
 
+class Solution {
+public:
+	ListNode *addTwoNumbers(ListNode *l1, ListNode *l2) {
+		ListNode dummy(-1); // 头节点
+		int carry = 0; // 记录进位 
+		ListNode *prev = &dummy; // 这种做法不会开辟新的内存空间；只是创建一个新指针，值用dummy的地址赋予；后续更改不会影响dummy 
+		// ListNode prev = dummy; // 直接赋值结构体可以吗? 结构体直接赋值会开辟新的ListNode空间，再完成元素拷贝（深）。
+		// 这样二者的地址就没联系了... 
+		
+		ListNode* h1 = l1; // =右边是指针（而指针的值就是地址）；所以h1现在的值就是l1的值，即现在h1和h2指向的地址相同； 
+		ListNode* h2 = l2; // 深浅拷贝是相对于两个指针所指向的对象而言的；单独定义指针并初始化没有这种问题 
+		 
+		while(h1!=nullptr || h2!=nullptr) {
+			int val1 = (h1!=nullptr)? h1->val: 0;  
+			int val2 = (h2!=nullptr)? h2->val: 0;
+			
+			/*if (carry==1) {
+				int num = (val1 + val2 +1);
+			}
+			else num = val1 + val2; 
+		    prev.val = num%10; */
+		    // 废话一大堆，用下面的两句替代 
+			int num = (val1 + val2 + carry) % 10;
+			carry = (val1 + val2 + carry) / 10;
+			prev->next = new ListNode(num); // 尾插法 
+			
+			h1 = (h1==nullptr)? nullptr : h1->next; // 不能简单地：h1 = h1->next;
+			h2 = (h2==nullptr)? nullptr : h2->next;
+			prev = prev->next;
+		} 
+		if (carry > 0) prev->next = new ListNode(carry); // 处理最大位数上可能的进位 
+		
+		return dummy.next;
+	}
+};
 
+/*
 class Solution {
 public:
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
@@ -41,7 +77,7 @@ public:
         return result;
     }
 };
-
+*/
 
 /*
 class Solution {
@@ -212,3 +248,4 @@ int main() {
     return 0;
 }
 
+// 注：从leetcode上copy的debug代码在本地可能产生奇怪结果...... 
