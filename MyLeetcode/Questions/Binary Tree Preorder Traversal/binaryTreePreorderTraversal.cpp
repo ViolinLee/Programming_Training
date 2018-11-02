@@ -27,14 +27,14 @@ vector<int> preorderTraversal(TreeNode *root) {
 vector<int> preorderTraversal1(TreeNode *root) {
     vector<int> v;
     vector<TreeNode*> stack; // 用STL的vector实现stack 
-    if (root) {
+    if (root) { // 根节点在while循环之前进栈（注意到while以stack.size()>0为条件） 
         stack.push_back(root);
     }
     while (stack.size()>0){
         TreeNode* n = stack.back();
         v.push_back(n->val);
         stack.pop_back();
-        if (n->right){
+        if (n->right){ //先right后left进stack 
             stack.push_back(n->right);
         }
         if (n->left){
