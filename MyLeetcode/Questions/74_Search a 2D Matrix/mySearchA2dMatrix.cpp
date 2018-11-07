@@ -7,7 +7,7 @@ public:
     bool searchMatrix(vector<vector<int>>& matrix, int target) {
         int num = matrix.size();
         
-        int left = 0, right = num;
+        int left = 0, right = num-1;
 		
 		int res = -1;
 		while(left <= right) {
@@ -17,16 +17,16 @@ public:
 					left = mid + 1;
 				} 
 				else right = mid - 1;
-				res = mid;
+				res = right;  //  查找最后一个小于key的元素：不是 res=mid 也不是 res=left 
 			}
 			else {
 				res = mid;
 				return true;
 			}	
 		}
-		cout << res-1 << endl;
+		cout << res << endl;
 		
-		vector<int> v = matrix[res-1];
+		vector<int> v = matrix[res];
 		for (int i=0; i<v.size(); i++) {
 			if (v[i] == target) return true;
 		}
@@ -41,7 +41,9 @@ int main() {
 							  {10, 11, 16, 20},
 							  {23, 30, 34, 50}};
 	
-	cout << solution.searchMatrix(vv, 3);
+	cout << solution.searchMatrix(vv, 30);
 	
 	return 0;
 }
+
+// 这一节需要总结二分搜索的套路及变种 
