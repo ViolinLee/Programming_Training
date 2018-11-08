@@ -15,12 +15,14 @@ int maxDepth(TreeNode *root) {
 
 class Solution {
 public:
-    bool isBalanced(TreeNode* root) {
+    bool isBalanced(TreeNode* root) { // 注意理解这里的逻辑！ 
+    	if (root==nullptr) return true;
+    	
         if (abs(maxDepth(root->left) - maxDepth(root->right)) > 1) {
         	return false;
 		} 
         
-		else return isBalanced(root->left) && isBalanced(root->right); 
+		return isBalanced(root->left) && isBalanced(root->right); 
     }
 };
 
@@ -38,3 +40,4 @@ int main() {
 }
 
 // 基本思路：需要可以获取树的高度的函数作为辅助 
+// 寻求更高效的解法 
