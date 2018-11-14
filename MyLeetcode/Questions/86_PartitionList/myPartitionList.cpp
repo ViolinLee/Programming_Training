@@ -14,9 +14,9 @@ public:
     	ListNode* dummy = new ListNode(-1);
         dummy->next =  head;
 		
-		ListNode* temp = dummy;
+		ListNode* temp = dummy; // 想到用来记录最后一个调到target前的值 
         ListNode* cur = head;
-        ListNode* pre = dummy;
+        ListNode* pre = dummy; // cur被调前后，cur未调前时的上一个节点指向cur未调前时的下一个节点 
         
 		while(cur != nullptr) {
 			if (cur->val >= x) {
@@ -39,9 +39,7 @@ public:
 					temp = cur;
 					cur = CUR; // pre 不变 
 					pre->next = cur;
-				}
-				
-				
+				}	
 			}
 		}
 		return dummy->next;
@@ -69,4 +67,4 @@ int main() {
 	return 0;
 }
 
-// OJ上测试效率是 100%  
+// OJ上测试效率是 100% ，思路和解法1接近，解法1的step1相当于跳过了if (cur == temp->next)。 
