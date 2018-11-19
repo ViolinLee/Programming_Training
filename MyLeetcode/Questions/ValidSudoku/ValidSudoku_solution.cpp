@@ -27,8 +27,8 @@ public:
 /* 注：标志矩阵套路 
 for (int i = 0; i < m; ++i) {
     for (int j = 0; j < n; ++j) {
-        ...matrix[i][j]...
-        rowFlag[i][c] 
+        ...c = matrix[i][j]...  // i行j列出现c 
+        rowFlag[i][c] // 需要标记i行出现c --> rowFlag[i][c] = true; (因为除了c之外还有其他数，因而不能用一维的: rowFlag[i] = true;)
         colFlag[c][j]
     }
 }
