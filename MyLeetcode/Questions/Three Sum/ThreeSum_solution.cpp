@@ -11,7 +11,7 @@ public:
 		
 		auto last = num.end();
 		for (auto i = num.begin(); i < last-2; ++i) {
-			auto j = i + 1;
+			auto j = i + 1; // j从i+1开始 
 			if (i > num.begin() && *i == *(i-1)) continue;
 			auto k = last - 1;
 			while(j < k) {
@@ -32,3 +32,8 @@ public:
 		return result;
  	}
 };
+
+/*
+注：为什么j从i+1开始；i指的是确定的第一个元素，在这一轮，i和另外两个数的三数组合都会遍历过。
+    因此，下一轮不再包含i。 
+*/ 
