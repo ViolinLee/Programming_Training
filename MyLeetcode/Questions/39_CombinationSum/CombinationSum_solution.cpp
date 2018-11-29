@@ -17,6 +17,21 @@ public:
         }
     }
 };
+/* 
+1. combinationSumDFS(candidates, target - candidates[i], i, out, res); 注意这里第三项是i，表示可以重复使用自己 
+2. 注意到 for(int i = start; i < candidates.size(); ++i)
+          for里面的combinationSumDFS(candidates, target - candidates[i], i, out, res);的start从i开始
+    所以获得结果组合是：
+	[
+    [2,2,2,2],
+    [2,3,3],
+    [3,5]
+    ] 
+    可以看到先找2...
+	        再找3... 
+*/ 
+
+
 
 
 class Solution {
